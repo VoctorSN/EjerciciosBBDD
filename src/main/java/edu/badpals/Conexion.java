@@ -64,6 +64,22 @@ public class Conexion {
 
     }
 
+    public boolean modificarPais(String nombre, Pais pais) {
+        String sql = "UPDATE paises SET nombre_pais = ?, numero_habitantes = ?, nombre_capital = ?, nombre_moneda = ? WHERE nombre_pais = ?";
+        try (PreparedStatement statement = conexion.prepareStatement(sql)) {
+            statement.setString(1, pais.getNombre_pais());
+            statement.setInt(2, pais.getNumero_habitantes());
+            statement.setString(3, pais.getNombre_capital());
+            statement.setString(4, pais.getNombre_moneda());
+            statement.setString(5, nombre);
+            int rowsUpdated = statement.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public void cerrarConexion(){
         try{
             this.conexion.close();
@@ -72,10 +88,10 @@ public class Conexion {
         }
     }
 
-    public void borrarPais(int id) {
+    public void borrarPais(String nombre) {
         try{
-            PreparedStatement s = conexion.prepareStatement("DELETE FROM Paises WHERE id = ?");
-            s.setInt(1,id);
+            PreparedStatement s = conexion.prepareStatement("DELETE FROM Paises WHERE nombre_pais = ?");
+            s.setString(1,nombre);
             s.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

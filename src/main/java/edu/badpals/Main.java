@@ -14,7 +14,16 @@ public class Main {
 
         conexion.getPaises();
 
-        conexion.borrarPais(13);
+        pais.setNombre_pais("pais2");
+
+        conexion.modificarPais("pais",pais);
+
+        conexion.getPaises();
+
+        conexion.borrarPais("pais2");
+
+        conexion.getPaises();
+
         conexion.cerrarConexion();
     }
 }
