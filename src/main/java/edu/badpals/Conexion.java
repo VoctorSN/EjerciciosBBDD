@@ -38,6 +38,7 @@ public class Conexion {
                 paises.add(pais);
                 System.out.println(pais);
             }
+            System.out.println();
 
             // Close the resources
             rs.close();
@@ -80,14 +81,6 @@ public class Conexion {
         }
     }
 
-    public void cerrarConexion(){
-        try{
-            this.conexion.close();
-        } catch (SQLException e) {
-            e.getErrorCode();
-        }
-    }
-
     public void borrarPais(String nombre) {
         try{
             PreparedStatement s = conexion.prepareStatement("DELETE FROM Paises WHERE nombre_pais = ?");
@@ -95,6 +88,14 @@ public class Conexion {
             s.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void cerrarConexion(){
+        try{
+            this.conexion.close();
+        } catch (SQLException e) {
+            e.getErrorCode();
         }
     }
 }
