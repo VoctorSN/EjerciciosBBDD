@@ -1,14 +1,14 @@
 package edu.badpals.modelo;
 
 public class Pais {
-    int id = 0;
-    String nombre_pais;
-    int numero_habitantes;
-    String nombre_capital;
-    String nombre_moneda;
+    private int id = 0;
+    private String nombrePais;
+    private int numero_habitantes;
+    private String nombre_capital;
+    private String nombre_moneda;
 
     public Pais(String nombre_pais, int numero_habitantes, String nombre_capital, String nombre_moneda) {
-        this.nombre_pais = nombre_pais;
+        this.nombrePais = nombre_pais;
         this.numero_habitantes = numero_habitantes;
         this.nombre_capital = nombre_capital;
         this.nombre_moneda = nombre_moneda;
@@ -23,11 +23,11 @@ public class Pais {
     }
 
     public String getNombre_pais() {
-        return nombre_pais;
+        return nombrePais;
     }
 
     public void setNombre_pais(String nombre_pais) {
-        this.nombre_pais = nombre_pais;
+        this.nombrePais = nombre_pais;
     }
 
     public int getNumero_habitantes() {
@@ -57,7 +57,7 @@ public class Pais {
     @Override
     public String toString() {
         return "id=" + id +
-                ", nombre_pais='" + nombre_pais + '\'' +
+                ", nombre_pais='" + nombrePais + '\'' +
                 ", numero_habitantes=" + numero_habitantes +
                 ", nombre_capital='" + nombre_capital + '\'' +
                 ", nombre_moneda='" + nombre_moneda + '\'';

@@ -1,11 +1,11 @@
 package edu.badpals.controlador;
 
-import edu.badpals.modelo.Conexion;
+import edu.badpals.modelo.ConexionPaises;
 import edu.badpals.vista.Inputs;
 import edu.badpals.vista.Prints;
 
 public class Controller {
-    Conexion conexion = new Conexion();
+    ConexionPaises conexion = new ConexionPaises();
     Inputs inputs = new Inputs();
 
     public void comenzar() {

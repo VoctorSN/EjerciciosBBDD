@@ -6,16 +6,16 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Conexion {
+public class ConexionPaises {
 
     private Connection makeConexion() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection("jdbc:mysql://localhost:3306/bbdd", "a23victorsn", "renaido");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionPaises.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionPaises.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -40,7 +40,7 @@ public class Conexion {
             s.close();
             conexion.close();
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionPaises.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -65,8 +65,9 @@ public class Conexion {
 
     public boolean modificarPais(String nombre, Pais pais) {
         String sql = "UPDATE paises SET nombre_pais = ?, numero_habitantes = ?, nombre_capital = ?, nombre_moneda = ? WHERE nombre_pais = ?";
-        Connection conexion = makeConexion();
-        try (PreparedStatement statement = conexion.prepareStatement(sql)) {
+        try {
+            Connection conexion = makeConexion();
+            PreparedStatement statement = conexion.prepareStatement(sql);
             statement.setString(1, pais.getNombre_pais());
             statement.setInt(2, pais.getNumero_habitantes());
             statement.setString(3, pais.getNombre_capital());
