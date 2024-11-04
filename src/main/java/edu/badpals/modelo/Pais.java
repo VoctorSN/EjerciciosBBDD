@@ -1,6 +1,4 @@
-package edu.badpals;
-
-import java.math.BigInteger;
+package edu.badpals.modelo;
 
 public class Pais {
     int id = 0;
