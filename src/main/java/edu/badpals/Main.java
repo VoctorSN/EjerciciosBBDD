@@ -30,33 +30,42 @@ public class Main {
 
         conexion.cerrarConexion(); */
         do {
-            System.out.println("¿Que quieres hacer?\n" +
-                    "1- Ver los paises\n" +
-                    "2- Insertar Un Pais\n" +
-                    "3-Modificar Un Pais\n" +
-                    "4-Eliminiar Un Pais\n" +
-                    "5-Salir");
+            System.out.println("""
+                    
+                    ¿Que quieres hacer?
+                    1- Ver los paises
+                    2- Insertar Un Pais
+                    3- Modificar Un Pais
+                    4- Eliminiar Un Pais
+                    5- Salir""");
             String respuesta = sc.nextLine();
             Pais pais;
             String nombrePais;
 
             switch (respuesta){
                 case "1":
+                    System.out.println("Listar Paises:");
                     conexion.getPaises();
                     break;
                 case "2":
+                    System.out.println("Insertar Pais:");
                     pais = pedirUnPais();
                     conexion.insertarPais(pais);
                     break;
                 case "3":
-                    pais = pedirUnPais();
+                    System.out.println("Editar Pais:");
                     nombrePais = pedirNombrePais();
+                    System.out.println("Dame como quieres que quede el Pais:");
+                    pais = pedirUnPais();
                     conexion.modificarPais(nombrePais,pais);
                     break;
                 case "4":
+                    System.out.println("Eliminar Pais:");
+                    nombrePais = pedirNombrePais();
+                    conexion.borrarPais(nombrePais);
                     break;
                 case "5":
-                    System.out.println("¿Seguro Que Quieres Salir?");
+                    System.out.println("¿Seguro Que Quieres Salir? (s/N)");
                     if (Objects.equals(sc.nextLine(), "s")){
                         salir = true;
                     }
@@ -71,15 +80,25 @@ public class Main {
     }
 
     private static String pedirNombrePais() {
+        System.out.println("Dame el nombre del pais");
+        return new Scanner(System.in).nextLine();
     }
 
     private static Pais pedirUnPais() {
         Scanner sc = new Scanner(System.in);
-        
+
         System.out.println("Escribeme el nombre del pais");
         String nombrePais = sc.nextLine();
-        System.out.println("Escribeme el numero de habitantes del pais");
-        int numeroHabitantes = Integer.parseInt(sc.nextLine());
+        int numeroHabitantes;
+        while (true) {
+            System.out.println("Escribeme el numero de habitantes del pais");
+            String scRes = sc.nextLine();
+            if (scRes.matches("\\d+")){
+                numeroHabitantes = Integer.parseInt(scRes);
+                break;
+            }
+            System.out.println("No es un numero valido de habitantes");
+        }
         System.out.println("Escribeme el nombre de la capital");
         String nombreCapital = sc.nextLine();
         System.out.println("Escribeme la moneda del pais");

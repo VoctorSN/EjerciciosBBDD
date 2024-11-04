@@ -62,6 +62,6 @@ public class Pais {
                 ", nombre_pais='" + nombre_pais + '\'' +
                 ", numero_habitantes=" + numero_habitantes +
                 ", nombre_capital='" + nombre_capital + '\'' +
-                ", nombre_moneda='" + nombre_moneda;
+                ", nombre_moneda='" + nombre_moneda + '\'';
     }
 }
